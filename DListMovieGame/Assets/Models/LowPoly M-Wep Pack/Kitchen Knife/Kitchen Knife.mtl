@@ -1,0 +1,23 @@
+# Blender 3.1.0 MTL File: 'Kitchen Knife.blend'
+# www.blender.org
+
+newmtl Material.015
+Ns 360.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.036565 0.015549 0.006266
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd  Kitchen Knife Handle.png
+
+newmtl Material.016
+Ns 851.425659
+Ka 0.581818 0.581818 0.581818
+Kd 0.698960 0.778640 0.831461
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
