@@ -23,4 +23,17 @@ public class Pickup : MonoBehaviour
             bat.transform.rotation = hand.transform.rotation;
         }
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        
+    
+        if (col.gameObject.tag == "Player") //&& this.gameObject.tag == "Key")
+        {
+            bat.transform.parent = hand.transform.parent;
+            bat.transform.position = hand.transform.position;
+            bat.transform.rotation = hand.transform.rotation;
+        }
+
+     }   
 }

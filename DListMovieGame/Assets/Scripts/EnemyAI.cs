@@ -28,19 +28,15 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Firstperson").transform;
+        player = GameObject.Find("PlayerArmature").transform;
         slasher = GetComponent<NavMeshAgent>();
 
     }
 
     private void Update()
     {
-        if (StunTimer > 0)
-        {
-            StunTimer -= Time.deltaTime;
-            return;  // you are stunned, sit still!
-        }
-
+        
+        slasher.destination = player.position;
         playerInRange = Physics.CheckSphere(transform.position, sightRange, whatPlayer);
 
                 playerInAttack = Physics.CheckSphere(transform.position, attacks, whatPlayer);
@@ -48,7 +44,11 @@ public class EnemyAI : MonoBehaviour
                 if (!playerInRange && !playerInAttack) Patrolling();
                 if (playerInRange && !playerInAttack) Chase();
                 if (playerInRange && playerInAttack) Attack();
-
+        if (StunTimer > 0)
+                {
+                    StunTimer -= Time.deltaTime;
+                    return;  // you are stunned, sit still!
+                }
     }   
 
     void Patrolling()
