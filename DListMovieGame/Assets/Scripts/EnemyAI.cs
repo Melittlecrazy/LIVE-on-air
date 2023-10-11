@@ -8,6 +8,8 @@ public class EnemyAI : MonoBehaviour
     public NavMeshAgent slasher;
 
     public float health;
+    private float StunTimer;
+    public float hit;
 
     public Transform player;
 
@@ -33,13 +35,20 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (StunTimer > 0)
+        {
+            StunTimer -= Time.deltaTime;
+            return;  // you are stunned, sit still!
+        }
+
         playerInRange = Physics.CheckSphere(transform.position, sightRange, whatPlayer);
 
-        playerInAttack = Physics.CheckSphere(transform.position, attacks, whatPlayer);
+                playerInAttack = Physics.CheckSphere(transform.position, attacks, whatPlayer);
 
-        if (!playerInRange && !playerInAttack) Patrolling();
-        if (playerInRange && !playerInAttack) Chase();
-        if (playerInRange && playerInAttack) Attack();
+                if (!playerInRange && !playerInAttack) Patrolling();
+                if (playerInRange && !playerInAttack) Chase();
+                if (playerInRange && playerInAttack) Attack();
+
     }   
 
     void Patrolling()
@@ -106,4 +115,11 @@ public class EnemyAI : MonoBehaviour
     {
         print("ow");
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Respawn") StunTimer += hit; ;
+    }
+
+    
 }
