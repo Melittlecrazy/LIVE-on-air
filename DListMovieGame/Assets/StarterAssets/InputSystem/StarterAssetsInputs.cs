@@ -40,7 +40,7 @@ namespace StarterAssets
 			JumpInput(value.isPressed);
 		}
 
-        public void OnBash(InputValue value)
+        public void OnSwing(InputValue value)
         {
             BashInput(value.isPressed);
         }
