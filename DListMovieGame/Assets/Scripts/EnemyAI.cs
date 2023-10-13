@@ -43,12 +43,12 @@ public class EnemyAI : MonoBehaviour
 
                 if (!playerInRange && !playerInAttack) Patrolling();
                 if (playerInRange && !playerInAttack) Chase();
-                if (playerInRange && playerInAttack) Attack();
+                //if (playerInRange && playerInAttack) Attack();
         if (StunTimer > 0)
-                {
+            {
                     StunTimer -= Time.deltaTime;
                     return;  // you are stunned, sit still!
-                }
+            }
     }   
 
     void Patrolling()
@@ -82,28 +82,28 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    private void Attack()
-    {
-        slasher.SetDestination(transform.position);
+    //private void Attack()
+    //{
+    //    slasher.SetDestination(transform.position);
 
-        transform.LookAt(player);
+    //    transform.LookAt(player);
 
-        if (!swong)
-        {
-            //Rigidbody rb = Instantiate(gun, transform.postion, Quaternion.identiry).GetComponent<RigidBody>();
-            //rb.AddForce(transform.up * 3f, ForceMode. Impulse);
+    //    if (!swong)
+    //    {
+    //        //Rigidbody rb = Instantiate(gun, transform.postion, Quaternion.identiry).GetComponent<RigidBody>();
+    //        //rb.AddForce(transform.up * 3f, ForceMode. Impulse);
 
 
 
-            swong = true;
-            Invoke(nameof(ResetAttack), swing);
-        }
-    }
+    //        swong = true;
+    //        Invoke(nameof(ResetAttack), swing);
+    //    }
+    //}
 
-    private void ResetAttack()
-    {
-        swong = false;
-    }
+    //private void ResetAttack()
+    //{
+    //    swong = false;
+    //}
 
     public void Stun(int damage)
     {
@@ -113,12 +113,18 @@ public class EnemyAI : MonoBehaviour
 
     void bob()
     {
-        print("ow");
+        
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Respawn") StunTimer += hit; ;
+        if (col.gameObject.tag == "Bat") 
+        { 
+            StunTimer += hit; 
+            
+            print("ow"); 
+             
+        }
     }
 
     

@@ -46,6 +46,8 @@ namespace StarterAssets
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
 
+        public bool swing = true;
+
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
@@ -90,6 +92,7 @@ namespace StarterAssets
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
+        private float _bashTimeoutDelta;
 
         // animation IDs
         private int _animIDSpeed;
@@ -97,6 +100,7 @@ namespace StarterAssets
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        private int _animIDBash;
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -109,6 +113,8 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+
+
 
         private bool IsCurrentDeviceMouse
         {
@@ -150,6 +156,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            
         }
 
         private void Update()
@@ -159,6 +167,7 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            //Hit();
         }
 
         private void LateUpdate()
@@ -173,6 +182,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIDBash = Animator.StringToHash("Swong");
         }
 
         private void GroundedCheck()
@@ -348,6 +358,61 @@ namespace StarterAssets
             }
         }
 
+        private void Hit()
+        {
+            if (swing)
+            {
+                // reset the fall timeout timer
+                _fallTimeoutDelta = FallTimeout;
+
+                // update animator if using character
+                
+
+                // Jump
+                if (_input.swing && _jumpTimeoutDelta <= 0.0f)
+                {
+
+                    // update animator if using character
+                    if (_hasAnimator)
+                    {
+                        _animator.SetBool(_animIDBash, true);
+                    }
+                }
+
+                // jump timeout
+                if (_jumpTimeoutDelta >= 0.0f)
+                {
+                    _jumpTimeoutDelta -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                // reset the jump timeout timer
+                _jumpTimeoutDelta = JumpTimeout;
+
+                // fall timeout
+                if (_fallTimeoutDelta >= 0.0f)
+                {
+                    _fallTimeoutDelta -= Time.deltaTime;
+                }
+                    _animator.SetBool(_animIDBash, false);
+                
+
+                // if we are not grounded, do not jump
+                _input.swing = false;
+            }
+
+            //driving.Drive.Forward.performed += cont =>
+            //{
+            //    currentSpeed = speed;
+            //};
+
+            //driving.Drive.Forward.canceled += cont =>
+            //{
+            //    currentSpeed = speed * 0;
+            //};
+        }
+
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;
@@ -389,4 +454,5 @@ namespace StarterAssets
             }
         }
     }
+   
 }

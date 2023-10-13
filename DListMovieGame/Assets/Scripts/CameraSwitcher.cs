@@ -9,9 +9,9 @@ public class CameraSwitcher : MonoBehaviour
 {
     public string george;
 
-    bool hasKey = false;
+    public bool hasKey;
 
-    public GameObject firstP, thirdP, key;
+    public GameObject firstP, thirdP, key, smile, frown;
 
     void Start()
     {
@@ -27,10 +27,10 @@ public class CameraSwitcher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player") firstP.SetActive(false); thirdP.SetActive(true);
+        if (other.gameObject.tag == "Player") firstP.SetActive(false); thirdP.SetActive(true); frown.SetActive(false); smile.SetActive(true);
 
         //if (other.gameObject.tag == "Key") { hasKey = true; }
 
-        if (other.gameObject.tag == "Player") SceneManager.LoadScene(george);
+        if (other.gameObject.tag == "Player" && hasKey == true) SceneManager.LoadScene(george);
     }
 }

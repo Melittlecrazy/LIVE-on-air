@@ -6,8 +6,12 @@ public class Hide : MonoBehaviour
 {
     public GameObject player;
 
-    private void OnCollisionStay(Collision col)
+    private void OnTriggerStay(Collider other)
     {
-        if (col.gameObject.tag == "Player") print("spooky?");
+        if (other.tag == "Player")
+        { 
+            print("spooky?"); 
+        }
     }
+
 }
