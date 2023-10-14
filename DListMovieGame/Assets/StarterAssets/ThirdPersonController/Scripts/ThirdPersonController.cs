@@ -167,7 +167,7 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
-            //Hit();
+            Hit();
         }
 
         private void LateUpdate()
@@ -360,57 +360,52 @@ namespace StarterAssets
 
         private void Hit()
         {
-            if (swing)
+            if (Keyboard.current.ctrlKey.IsPressed() == true)//|| Gamepad.current.buttonEast.IsPressed() == true )
             {
-                // reset the fall timeout timer
-                _fallTimeoutDelta = FallTimeout;
+                _animator.SetBool(_animIDBash, true);
+            }
+            
+            //if (swing)
+            //{
+            //    // reset the fall timeout timer
+            //    _fallTimeoutDelta = FallTimeout;
 
-                // update animator if using character
+            //    // update animator if using character
                 
 
-                // Jump
-                if (_input.swing && _jumpTimeoutDelta <= 0.0f)
-                {
+            //    // Jump
+            //    if (_input.swing && _jumpTimeoutDelta <= 0.0f)
+            //    {
 
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDBash, true);
-                    }
-                }
+            //        // update animator if using character
+            //        if (_hasAnimator)
+            //        {
+            //            
+            //        }
+            //    }
 
-                // jump timeout
-                if (_jumpTimeoutDelta >= 0.0f)
-                {
-                    _jumpTimeoutDelta -= Time.deltaTime;
-                }
-            }
+            //    // jump timeout
+            //    if (_jumpTimeoutDelta >= 0.0f)
+            //    {
+            //        _jumpTimeoutDelta -= Time.deltaTime;
+            //    }
+            //}
             else
             {
                 // reset the jump timeout timer
-                _jumpTimeoutDelta = JumpTimeout;
+                //_jumpTimeoutDelta = JumpTimeout;
 
-                // fall timeout
-                if (_fallTimeoutDelta >= 0.0f)
-                {
-                    _fallTimeoutDelta -= Time.deltaTime;
-                }
+                //// fall timeout
+                //if (_fallTimeoutDelta >= 0.0f)
+                //{
+                //    _fallTimeoutDelta -= Time.deltaTime;
+                //}
                     _animator.SetBool(_animIDBash, false);
                 
 
                 // if we are not grounded, do not jump
-                _input.swing = false;
+                //_input.swing = false;
             }
-
-            //driving.Drive.Forward.performed += cont =>
-            //{
-            //    currentSpeed = speed;
-            //};
-
-            //driving.Drive.Forward.canceled += cont =>
-            //{
-            //    currentSpeed = speed * 0;
-            //};
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
