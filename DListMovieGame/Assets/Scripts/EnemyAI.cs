@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     public float hit;
 
     public Transform player;
+    public string daPlayer;
 
     public LayerMask whatISGround, whatPlayer;
 
@@ -28,7 +29,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("PlayerArmature").transform;
+        player = GameObject.Find(daPlayer).transform;
         slasher = GetComponent<NavMeshAgent>();
 
     }

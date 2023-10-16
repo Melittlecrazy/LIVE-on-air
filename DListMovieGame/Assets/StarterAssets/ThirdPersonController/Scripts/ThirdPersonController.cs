@@ -360,7 +360,9 @@ namespace StarterAssets
 
         private void Hit()
         {
-            if (Keyboard.current.ctrlKey.IsPressed() == true)//|| Gamepad.current.buttonEast.IsPressed() == true )
+
+            //if (Gamepad.isconnected)
+            if (Keyboard.current.ctrlKey.IsPressed() == true || Gamepad.current.buttonEast.IsPressed() == true )
             {
                 _animator.SetBool(_animIDBash, true);
             }
