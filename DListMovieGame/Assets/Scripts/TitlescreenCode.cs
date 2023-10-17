@@ -39,7 +39,7 @@ public class TitlescreenCode : MonoBehaviour
 
     public void Credits()
     {
-
+        SceneManager.LoadScene("Credits");
     }
 
     public void QuitGame()

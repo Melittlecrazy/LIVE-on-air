@@ -1060,7 +1060,7 @@ Transform:
   - {fileID: 8002264680419333305}
   - {fileID: 272993188807782130}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6982812146204527121
 Animator:
@@ -1141,6 +1141,7 @@ MonoBehaviour:
   Gravity: -15
   JumpTimeout: 0.3
   FallTimeout: 0.15
+  swing: 1
   Grounded: 1
   GroundedOffset: -0.14
   GroundedRadius: 0.28
@@ -1185,6 +1186,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
+  swing: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -2266,9 +2268,9 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 43714b68324cc2c409d534d9874f2a2b, type: 2}
-  - {fileID: 2100000, guid: 766fd3ff04aab4745a764d33daac86fa, type: 2}
-  - {fileID: 2100000, guid: 8b25e99361ac31d4e9ae83c46aee69ea, type: 2}
+  - {fileID: 2100000, guid: b4d2a5bfa705e6e408f5a1fa24e99ea9, type: 2}
+  - {fileID: 2100000, guid: 08cc4384fe9456940afbc4ae4e0ded04, type: 2}
+  - {fileID: 2100000, guid: b4d2a5bfa705e6e408f5a1fa24e99ea9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

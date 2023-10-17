@@ -11,7 +11,7 @@ public class CameraSwitcher : MonoBehaviour
 
     public bool hasKey;
 
-    public GameObject firstP, thirdP, key, smile, frown;
+    public GameObject firstP, thirdP, key, smile, frown, door1,door2;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player") firstP.SetActive(false); thirdP.SetActive(true); frown.SetActive(false); smile.SetActive(true);
+        if (other.gameObject.tag == "Player") firstP.SetActive(false); thirdP.SetActive(true); frown.SetActive(false); smile.SetActive(true); door1.SetActive(false); door2.SetActive(true);
 
         //if (other.gameObject.tag == "Key") { hasKey = true; }
 

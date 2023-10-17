@@ -361,37 +361,42 @@ namespace StarterAssets
         private void Hit()
         {
 
-            //if (Gamepad.isconnected)
-            if (Keyboard.current.ctrlKey.IsPressed() == true || Gamepad.current.buttonEast.IsPressed() == true )
+            
+            //if (Keyboard.current.ctrlKey.IsPressed() == true)
+            //{
+            //    _animator.SetBool(_animIDBash, true);
+            //}
+            //else if ( Gamepad.current != null) { 
+            if (Gamepad.current.buttonEast.IsPressed() == true )
             {
                 _animator.SetBool(_animIDBash, true);
-            }
-            
+            }//}
+
             //if (swing)
             //{
             //    // reset the fall timeout timer
             //    _fallTimeoutDelta = FallTimeout;
 
-            //    // update animator if using character
-                
+                //    // update animator if using character
 
-            //    // Jump
-            //    if (_input.swing && _jumpTimeoutDelta <= 0.0f)
-            //    {
 
-            //        // update animator if using character
-            //        if (_hasAnimator)
-            //        {
-            //            
-            //        }
-            //    }
+                //    // Jump
+                //    if (_input.swing && _jumpTimeoutDelta <= 0.0f)
+                //    {
 
-            //    // jump timeout
-            //    if (_jumpTimeoutDelta >= 0.0f)
-            //    {
-            //        _jumpTimeoutDelta -= Time.deltaTime;
-            //    }
-            //}
+                //        // update animator if using character
+                //        if (_hasAnimator)
+                //        {
+                //            
+                //        }
+                //    }
+
+                //    // jump timeout
+                //    if (_jumpTimeoutDelta >= 0.0f)
+                //    {
+                //        _jumpTimeoutDelta -= Time.deltaTime;
+                //    }
+                //}
             else
             {
                 // reset the jump timeout timer
@@ -451,5 +456,7 @@ namespace StarterAssets
             }
         }
     }
+
+
    
 }
