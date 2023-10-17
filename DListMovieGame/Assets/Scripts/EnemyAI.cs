@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
     public string daPlayer;
+    private Animator animator;
 
     public LayerMask whatISGround, whatPlayer;
 
@@ -27,10 +28,16 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attacks;
     public bool playerInRange, playerInAttack;
 
+    private Vector2 velocity;
+    private Vector2 SmoothPos;
+
     private void Awake()
     {
         player = GameObject.Find(daPlayer).transform;
         slasher = GetComponent<NavMeshAgent>();
+        //Animator  = slasher.GetComponent<Animator>();
+
+        //Animator.applyRootMotion = true;
 
     }
 
